@@ -77,7 +77,7 @@ public class BankingFunctions {
         }
         TimeUnit.SECONDS.sleep(1);
         System.out.println("------------------------------------");
-        System.out.println("WITHDRAWAL SUCCESSFUL");
+        System.out.println("WITHDRAW SUCCESSFUL");
         TimeUnit.SECONDS.sleep(1);
     }
 
