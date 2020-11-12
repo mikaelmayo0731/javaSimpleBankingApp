@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BankingFunctions {
     Scanner input = new Scanner(System.in);
-    private double total = 0.00;
+    private double balance = 0.00;
 
     public String getAccountNumber() {
         String convertedNum;
@@ -46,7 +46,7 @@ public class BankingFunctions {
             try {
                 System.out.print("Enter amount you would like to deposit: ");
                 double depositAmount = input.nextDouble();
-                total += depositAmount;
+                balance += depositAmount;
                 break;
             } catch (Exception e) {
                 System.out.println("------------------------------------");
@@ -62,29 +62,44 @@ public class BankingFunctions {
     }
 
     public void makeWithdrawal() throws InterruptedException {
-        while (true) {
-            try {
-                System.out.print("Enter amount you would like to withdraw: ");
-                double depositAmount = input.nextDouble();
-                total -= depositAmount;
-                break;
-            } catch (Exception e) {
-                System.out.println("------------------------------------");
-                System.out.println("INVALID AMOUNT");
-                System.out.println("------------------------------------");
-                input.nextLine();
+        if (balance <= 0) {
+            TimeUnit.SECONDS.sleep(1);
+            System.out.println("------------------------------------");
+            System.out.println("INSUFFICIENT BALANCE FOR WITHDRAWAL");
+        } else {
+            while (true) {
+                try {
+                    System.out.print("Enter amount you would like to withdraw: ");
+                    double withdrawAmount = input.nextDouble();
+                    if ((balance - withdrawAmount) >= 0) {
+                        balance -= withdrawAmount;
+                        break;
+                    } else {
+                        System.out.println("------------------------------------");
+                        System.out.println("INVALID AMOUNT");
+                        System.out.println("------------------------------------");
+                        input.nextLine();
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("------------------------------------");
+                    System.out.println("INVALID AMOUNT");
+                    System.out.println("------------------------------------");
+                    input.nextLine();
+                }
             }
+            TimeUnit.SECONDS.sleep(1);
+            System.out.println("------------------------------------");
+            System.out.println("WITHDRAW SUCCESSFUL");
         }
         TimeUnit.SECONDS.sleep(1);
-        System.out.println("------------------------------------");
-        System.out.println("WITHDRAW SUCCESSFUL");
-        TimeUnit.SECONDS.sleep(1);
+
     }
 
     public void checkBalance() {
         System.out.println("------------------------------------");
         System.out.print("CURRENT BALANCE: $");
-        System.out.printf("%.2f", total);
+        System.out.printf("%.2f", balance);
         System.out.println();
 
     }
