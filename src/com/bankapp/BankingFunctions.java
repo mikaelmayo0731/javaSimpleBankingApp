@@ -7,7 +7,7 @@ public class BankingFunctions {
     Scanner input = new Scanner(System.in);
     private double balance = 0.00;
 
-    public String getAccountNumber() {
+    public String getAccountNumber() throws InterruptedException {
         String convertedNum;
         while (true) {
             try {
@@ -17,14 +17,17 @@ public class BankingFunctions {
                 if (convertedNum.length() == 16) {
                     break;
                 } else {
+                    TimeUnit.SECONDS.sleep(1);
                     System.out.println("------------------------------------");
                     System.out.println("INVALID ACCOUNT NUMBER");
                     System.out.println("------------------------------------");
-                }
+                    TimeUnit.SECONDS.sleep(1);                }
             } catch (Exception e) {
+                TimeUnit.SECONDS.sleep(1);
                 System.out.println("------------------------------------");
                 System.out.println("INVALID ACCOUNT NUMBER");
                 System.out.println("------------------------------------");
+                TimeUnit.SECONDS.sleep(1);
                 input.nextLine();
             }
         }
@@ -49,9 +52,11 @@ public class BankingFunctions {
                 balance += depositAmount;
                 break;
             } catch (Exception e) {
+                TimeUnit.SECONDS.sleep(1);
                 System.out.println("------------------------------------");
                 System.out.println("INVALID AMOUNT");
                 System.out.println("------------------------------------");
+                TimeUnit.SECONDS.sleep(1);
                 input.nextLine();
             }
         }
@@ -75,9 +80,11 @@ public class BankingFunctions {
                         balance -= withdrawAmount;
                         break;
                     } else {
+                        TimeUnit.SECONDS.sleep(1);
                         System.out.println("------------------------------------");
                         System.out.println("INVALID AMOUNT");
                         System.out.println("------------------------------------");
+                        TimeUnit.SECONDS.sleep(1);
                         input.nextLine();
                     }
 

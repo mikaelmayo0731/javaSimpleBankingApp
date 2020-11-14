@@ -32,12 +32,14 @@ public class Main {
                     using = false;
                     System.out.println("------------------------------------");
                     System.out.println("THANK YOU");
+                    System.out.println("------------------------------------");
                     TimeUnit.SECONDS.sleep(1);
                     break;
                 default:
                     TimeUnit.SECONDS.sleep(1);
                     System.out.println("------------------------------------");
                     System.out.println("INVALID INPUT");
+                    System.out.println("------------------------------------");
                     TimeUnit.SECONDS.sleep(1);
             }
         }
